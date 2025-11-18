@@ -1,50 +1,29 @@
 // DOM 요소 가져오기
-const usernameInput = document.getElementById("username");
-const passwordInput = document.getElementById("password");
-const signInBtn = document.getElementById("signInBtn");
-const forgotPasswordBtn = document.getElementById("forgotPasswordBtn");
-const createAccountBtn = document.getElementById("createAccountBtn");
+const loginBtn = document.getElementById("loginBtn");
+const ctaButton = document.getElementById("ctaButton");
 
-// 시간 업데이트 함수
-function updateTime() {
-  const timeElement = document.querySelector(".time");
-  if (timeElement) {
-    const now = new Date();
-    const hours = String(now.getHours()).padStart(2, "0");
-    const minutes = String(now.getMinutes()).padStart(2, "0");
-    timeElement.textContent = `${hours}:${minutes}`;
-  }
-}
-
-// 페이지 로드 시 시간 설정 및 주기적 업데이트
-updateTime();
-setInterval(updateTime, 60000); // 1분마다 업데이트
-
-// 입력 필드 포커스 효과
-[usernameInput, passwordInput].forEach((input) => {
-  input.addEventListener("focus", function () {
-    this.parentElement.style.transform = "scale(1.01)";
-  });
-
-  input.addEventListener("blur", function () {
-    this.parentElement.style.transform = "scale(1)";
-  });
-});
-
-// Sign In 버튼 클릭 이벤트
-signInBtn.addEventListener("click", function (e) {
+// 로그인 버튼 클릭 이벤트
+loginBtn.addEventListener("click", function (e) {
   e.preventDefault();
 
-  const username = usernameInput.value.trim();
-  const password = passwordInput.value.trim();
+  console.log("로그인 버튼 클릭");
 
-  if (!username || !password) {
-    alert("Please enter both username and password.");
-    return;
-  }
+  // 버튼 클릭 애니메이션
+  this.style.transform = "scale(0.95)";
+  setTimeout(() => {
+    this.style.transform = "scale(1)";
+  }, 150);
 
-  // 로그인 처리 (실제 구현 시 API 호출 등)
-  console.log("Sign In attempt:", { username, password });
+  // 실제 구현 시 로그인 페이지로 이동
+  alert("로그인 페이지로 이동합니다.");
+  // window.location.href = "/login";
+});
+
+// CTA 버튼 클릭 이벤트
+ctaButton.addEventListener("click", function (e) {
+  e.preventDefault();
+
+  console.log("감사일기 시작하기 버튼 클릭");
 
   // 버튼 클릭 애니메이션
   this.style.transform = "scale(0.98)";
@@ -52,58 +31,9 @@ signInBtn.addEventListener("click", function (e) {
     this.style.transform = "scale(1)";
   }, 150);
 
-  // 성공 메시지 (실제로는 서버 응답에 따라 처리)
-  alert("Sign in successful! (This is a demo)");
-});
-
-// Forgot Password 버튼 클릭 이벤트
-forgotPasswordBtn.addEventListener("click", function (e) {
-  e.preventDefault();
-
-  console.log("Forgot Password clicked");
-
-  // 버튼 클릭 애니메이션
-  this.style.transform = "scale(0.98)";
-  setTimeout(() => {
-    this.style.transform = "scale(1)";
-  }, 150);
-
-  alert("Password reset link will be sent to your email.");
-});
-
-// Create Account 버튼 클릭 이벤트
-createAccountBtn.addEventListener("click", function (e) {
-  e.preventDefault();
-
-  console.log("Create Account clicked");
-
-  // 버튼 클릭 애니메이션
-  this.style.transform = "scale(0.98)";
-  setTimeout(() => {
-    this.style.transform = "scale(1)";
-  }, 150);
-
-  alert("Redirecting to sign up page...");
-});
-
-// Enter 키로 로그인
-passwordInput.addEventListener("keypress", function (e) {
-  if (e.key === "Enter") {
-    signInBtn.click();
-  }
-});
-
-// 입력 필드 유효성 검사
-usernameInput.addEventListener("input", function () {
-  if (this.value.length > 0) {
-    this.style.color = "#dedede";
-  }
-});
-
-passwordInput.addEventListener("input", function () {
-  if (this.value.length > 0) {
-    this.style.color = "#dedede";
-  }
+  // 실제 구현 시 감사일기 작성 페이지로 이동
+  alert("감사일기 작성 페이지로 이동합니다.");
+  // window.location.href = "/write";
 });
 
 // 페이지 로드 애니메이션
@@ -115,14 +45,72 @@ window.addEventListener("load", function () {
   }, 100);
 });
 
-// 배터리 아이콘 애니메이션 (선택사항)
-function animateBattery() {
-  const batteryFill = document.querySelector(".battery-fill");
-  if (batteryFill) {
-    // 배터리 레벨 시뮬레이션 (실제로는 시스템 정보 필요)
-    const batteryLevel = 75; // 0-100
-    batteryFill.style.width = `${(batteryLevel / 100) * 16}px`;
-  }
-}
+// 스크롤 시 헤더 효과
+let lastScroll = 0;
+const header = document.querySelector(".header");
 
-animateBattery();
+window.addEventListener("scroll", function () {
+  const currentScroll = window.pageYOffset;
+
+  if (currentScroll > 100) {
+    header.style.boxShadow = "0 2px 20px rgba(0, 0, 0, 0.1)";
+  } else {
+    header.style.boxShadow = "0 2px 10px rgba(0, 0, 0, 0.05)";
+  }
+
+  lastScroll = currentScroll;
+});
+
+// 부드러운 스크롤 효과
+document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+  anchor.addEventListener("click", function (e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute("href"));
+    if (target) {
+      target.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  });
+});
+
+// 기능 카드 호버 효과 강화
+const featureCards = document.querySelectorAll(".feature-card");
+
+featureCards.forEach((card) => {
+  card.addEventListener("mouseenter", function () {
+    this.style.transition = "all 0.3s ease";
+  });
+
+  card.addEventListener("mouseleave", function () {
+    this.style.transition = "all 0.3s ease";
+  });
+});
+
+// Intersection Observer를 사용한 스크롤 애니메이션
+const observerOptions = {
+  threshold: 0.1,
+  rootMargin: "0px 0px -50px 0px",
+};
+
+const observer = new IntersectionObserver(function (entries) {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = "1";
+      entry.target.style.transform = "translateY(0)";
+    }
+  });
+}, observerOptions);
+
+// 관찰할 요소들
+const animatedElements = document.querySelectorAll(
+  ".feature-card, .hero-container"
+);
+
+animatedElements.forEach((el) => {
+  el.style.opacity = "0";
+  el.style.transform = "translateY(30px)";
+  el.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+  observer.observe(el);
+});

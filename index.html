@@ -4,70 +4,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page - Dark Mode</title>
+    <title>Gratitude Journal - 감사일기</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Outfit:wght@400;500;600&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <div class="container">
-        <!-- Header Navigation Bar -->
-        <header class="header">
-            <div class="status-bar">
-                <div class="time">09:41</div>
-                <div class="status-icons">
-                    <div class="signal-icon"></div>
-                    <div class="wifi-icon"></div>
-                    <div class="battery-icon">
-                        <div class="battery-shape">
-                            <div class="battery-fill"></div>
-                        </div>
-                    </div>
-                </div>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <div class="logo">Gratitude Journal</div>
+            <button class="login-btn" id="loginBtn">로그인</button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-container">
+            <h1 class="main-title">오늘 하루 감사한 일을 기록해보세요</h1>
+            <p class="subtitle">매일 작은 감사함을 기록하며 더 행복한 하루를 만들어가세요</p>
+            <button class="cta-button" id="ctaButton">감사일기 시작하기</button>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="features-container">
+            <div class="feature-card">
+                <div class="feature-icon">📝</div>
+                <h3 class="feature-title">간편한 기록</h3>
+                <p class="feature-desc">하루 종일의 감사한 순간을 쉽게 기록할 수 있습니다</p>
             </div>
-        </header>
-
-        <!-- Main Content -->
-        <main class="main-content">
-            <div class="sign-in-form">
-                <!-- Welcome Header -->
-                <div class="welcome-header">
-                    <h1 class="welcome-title">Welcome back!</h1>
-                </div>
-
-                <!-- Form Fields -->
-                <div class="form-fields">
-                    <div class="text-field">
-                        <div class="text-field-atom">
-                            <input type="text" id="username" class="input-field" placeholder="Username">
-                        </div>
-                    </div>
-                    <div class="text-field">
-                        <div class="text-field-atom">
-                            <input type="password" id="password" class="input-field" placeholder="Password">
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Buttons -->
-                <div class="sign-in-buttons">
-                    <button class="btn btn-primary" id="signInBtn">Sign In</button>
-                    <button class="btn btn-secondary" id="forgotPasswordBtn">Forgot Password</button>
-                    <button class="btn btn-tertiary" id="createAccountBtn">Create Account</button>
-                </div>
+            <div class="feature-card">
+                <div class="feature-icon">📅</div>
+                <h3 class="feature-title">일기 모아보기</h3>
+                <p class="feature-desc">과거의 감사일기를 언제든지 되돌아볼 수 있습니다</p>
             </div>
-        </main>
-
-        <!-- Bottom Bar -->
-        <footer class="bottom-bar">
-            <div class="gesture-indicator">
-                <div class="indicator-bar"></div>
+            <div class="feature-card">
+                <div class="feature-icon">💝</div>
+                <h3 class="feature-title">긍정의 힘</h3>
+                <p class="feature-desc">매일의 감사함이 더 행복한 삶을 만들어갑니다</p>
             </div>
-        </footer>
-    </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <p class="footer-text">© 2024 Gratitude Journal. 감사한 하루를 함께 만들어가요.</p>
+        </div>
+    </footer>
 
     <script src="script.js"></script>
 </body>
